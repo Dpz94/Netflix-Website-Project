@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('checkout code') {
             steps {
-                git checkout
+                sh 'git checkout'
             }
         }
         stage('deploy code to server') {
