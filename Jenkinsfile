@@ -7,8 +7,10 @@ pipeline {
             }
         }
         stage('deploy code to server') {
-            sh 'scp -i /var/lib/jenkins/key.pem -o StrictHostKeyChecking=no * centos@10.20.242.34:/var/www/html'
-            sh 'ssh -i /var/lib/jenkins/key.pem -o StrictHostKeyChecking=no service httpd restart'
+            steps {
+                sh 'scp -i /var/lib/jenkins/key.pem -o StrictHostKeyChecking=no * centos@10.20.242.34:/var/www/html'
+                sh 'ssh -i /var/lib/jenkins/key.pem -o StrictHostKeyChecking=no service httpd restart'
+            }
         }
     }
 }
